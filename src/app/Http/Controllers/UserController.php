@@ -5,8 +5,8 @@ namespace Sparkouttech\UserAuth\app\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Sparkouttech\UserAuth\app\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Sparkouttech\UserAuth\app\Http\Requests\LoginRequest;
-use Sparkouttech\UserAuth\app\Http\Requests\RegisterRequest;
+use Sparkouttech\UserAuth\app\Requests\LoginRequest;
+use Sparkouttech\UserAuth\app\Requests\RegisterRequest;
 use Sparkouttech\UserAuth\Models\User;
 
 use Sparkouttech\UserAuth\Repositories\UserRepository;
