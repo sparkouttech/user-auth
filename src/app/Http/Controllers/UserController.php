@@ -7,7 +7,7 @@ use Sparkouttech\UserAuth\app\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Sparkouttech\UserAuth\app\Requests\LoginRequest;
 use Sparkouttech\UserAuth\app\Requests\RegisterRequest;
-use Sparkouttech\UserAuth\Models\User;
+use Sparkouttech\UserAuth\app\Models\User;
 
 use Sparkouttech\UserAuth\Repositories\UserRepository;
 
