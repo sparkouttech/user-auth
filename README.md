@@ -22,6 +22,12 @@ composer require sparkouttech/user-auth
 Sparkouttech\UserAuth\UserAuthServiceProvider::class,
 ```
 
+Run below command to publish assets 
+```php
+php artisan vendor:publish --tag=UserAuthAssets --force
+```
+
+
 ```php
 // run below command to import user tables 
 php artisan migrate
