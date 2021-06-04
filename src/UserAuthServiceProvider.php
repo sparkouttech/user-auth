@@ -66,7 +66,7 @@ class UserAuthServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/resources/assets' => public_path('vendor/user-auth'),
-        ], 'assets');
+        ], 'UserAuthAssets');
     }
 
     // Publishing the translation files.
