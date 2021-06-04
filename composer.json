@@ -44,7 +44,7 @@
         "post-update-cmd": [
               "...",
               "php artisan vendor:publish --tag=UserAuthAssets --force"
-        ],
+        ]
     },
     "config": {
         "sort-packages": true
