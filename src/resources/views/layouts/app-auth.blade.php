@@ -17,7 +17,7 @@
         <!-- Load Material Icons from Google Fonts-->
         <link href="{{ asset('user-auth::/css/material-fonts.css') }}" rel="preload" as="font" />
         <!-- Load main stylesheet-->
-        <link href="{{ asset('user-auth::/css/styles.css') }}" rel="stylesheet" />
+        <link href="{{asset('user-auth/css/styles.css')}}" rel="stylesheet" />
 
         @yield('css')
     </head>
@@ -26,13 +26,13 @@
 
         <!-- Load Bootstrap JS bundle-->
         
-        <script src="{{asset('user-auth::/js/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
+        <script src="{{asset('user-auth/js/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
         <!-- Load global scripts-->
-        <script type="module" src="{{url('/')}}/user-auth/js/material.js"></script>
-        <script src="{{url('/')}}/user-auth/js/scripts.js"></script>
+        <script type="module" src="{{ asset('user-auth/js/material.js') }}"></script>
+        <script src="{{asset('user-auth/js/scripts.js')}}"></script>
         <!-- Load Custom Checkbox Script-->
-        <script src="{{url('/')}}/user-auth/js/checklist.js"></script>
-        <script src="{{url('/')}}/user-auth/js/common.js"></script>
+        <script src="{{asset('user-auth/js/checklist.js')}}"></script>
+        <script src="{{asset('user-auth/js/common.js')}}"></script>
         @yield('js')
     </body>
 
