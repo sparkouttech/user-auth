@@ -38,12 +38,10 @@
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "post-install-cmd": [
-              "...",
-              "php artisan vendor:publish --tag=UserAuthAssets --force"
+            "php artisan vendor:publish --tag=UserAuthAssets --force"
         ],
         "post-update-cmd": [
-              "...",
-              "php artisan vendor:publish --tag=UserAuthAssets --force"
+            "php artisan vendor:publish --tag=UserAuthAssets --force"
         ]
     },
     "config": {
