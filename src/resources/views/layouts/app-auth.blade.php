@@ -15,7 +15,10 @@
         @include('user-auth::includes.meta')
 
         <!-- Load Material Icons from Google Fonts-->
-        <link href="{{ asset('user-auth::/css/material-fonts.css') }}" rel="preload" as="font" />
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Roboto and Roboto Mono fonts from Google Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Load main stylesheet-->
         <link href="{{asset('user-auth/css/styles.css')}}" rel="stylesheet" />
 
@@ -26,7 +29,7 @@
 
         <!-- Load Bootstrap JS bundle-->
         
-        <script src="{{asset('user-auth/js/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
+        <script src="{{asset('user-auth/js/bootstrap.bundle.min.js')}}" ></script>
         <!-- Load global scripts-->
         <script type="module" src="{{ asset('user-auth/js/material.js') }}"></script>
         <script src="{{asset('user-auth/js/scripts.js')}}"></script>
