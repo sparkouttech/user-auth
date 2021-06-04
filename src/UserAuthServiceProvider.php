@@ -65,7 +65,7 @@ class UserAuthServiceProvider extends ServiceProvider
     public function assetsPublish()
     {
         $this->publishes([
-            __DIR__.'/resources/assets' => public_path('vendor/user-auth'),
+            __DIR__.'/resources/assets' => public_path('user-auth'),
         ], 'UserAuthAssets');
     }
 
