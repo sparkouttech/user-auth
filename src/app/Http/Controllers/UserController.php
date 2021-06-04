@@ -2,6 +2,7 @@
 
 namespace Sparkouttech\UserAuth\app\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Sparkouttech\UserAuth\app\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Sparkouttech\UserAuth\app\Http\Requests\LoginRequest;
@@ -30,7 +31,19 @@ class UserController extends Controller
      */
     public function doLogin(LoginRequest $request)
     {
-
+        $request = $request->all();
+        $user = User::where('email', '=', $request['email'])->first();
+        if ($user) {
+            if (Hash::check($request['password'], $user->password))
+            {
+                // The passwords match...
+                return back()->with('message','Login success');
+            } else {
+                return back()->with('error','Password doesnt match with that account');
+            }
+        } else {
+            return back()->with('error','Email id doesnt match');
+        }
     }
 
     public function register(Request $request)
@@ -40,7 +53,9 @@ class UserController extends Controller
 
     public function doRegister(RegisterRequest $request)
     {
-        $user = User::create($request->all());
+        $requestData = $request->all();
+        $requestData["password"] = Hash::make($requestData["password"]);
+        $user = User::create($requestData);
         session('user',$user);
         session('userId',$user->id);
         return back()->with('message','User account created successfully');
