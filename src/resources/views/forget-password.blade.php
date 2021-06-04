@@ -18,7 +18,6 @@
             </div>
         @endif
     @endforeach
-
     <div id="layoutAuthentication">
         <!-- Layout content-->
         <div id="layoutAuthentication_content">
@@ -32,41 +31,27 @@
                                 <div class="card-body p-5">
                                     <!-- Auth header with logo image-->
                                     <div class="text-center">
-                                        <h1 class="display-5 mb-0">Login</h1>
-                                        <div class="subheading-1 mb-5">to continue the app</div>
+                                        <h1 class="display-5 mb-4">Reset Password</h1>
                                     </div>
-                                    <!-- Login submission form-->
-                                    <form method="post" action="{{route('userAuth.login')}}">
+                                    <!-- Reset password submission form-->
+                                    <form method="post" action="{{route('userAuth.check-email')}}">
                                         {{csrf_field()}}
                                         <div class="mb-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" name="email"
-                                                       id="exampleInputEmail1" aria-describedby="emailHelp"
-                                                       placeholder="Enter email">
-                                                <small id="emailHelp" class="form-text text-muted">We'll never share
-                                                    your email with anyone else.</small>
+                                                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                             </div>
                                         </div>
-                                        <div class="mb-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" class="form-control" name="password"
-                                                       id="exampleInputPassword1" placeholder="Password">
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small fw-500 text-decoration-none"
-                                               href="{{route('userAuth.forgetPasswordPage')}}">Forgot Password?</a>
-                                            <button type="submit" class="btn btn-primary">Login</button>
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small fw-500 text-decoration-none" href="login">Return to login</a>
+                                            <button class="btn btn-primary" href="{{route('getLogin')}}">Reset Password</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <!-- Auth card message-->
-                            <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-white"
-                                                             href="register">Need an account? Sign up!</a></div>
+                            <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-white" href="register">Need an account? Sign up!</a></div>
                         </div>
                     </div>
                 </div>
@@ -74,3 +59,4 @@
         </div>
     </div>
 @endsection
+

@@ -4,18 +4,20 @@
 
 @section('content')
 
-    @if(session()->has('error'))
-        <div id="toast-error" class="error-alert-show toast align-items-center position-absolute top-0 end-0"
-             role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    {{ session()->get('error') }}
+    @foreach($errors->all() as $key => $error)
+        @if($key == 0)
+            <div id="toast-error" class="error-alert-show toast align-items-center position-absolute top-0 end-0"
+                 role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{$error}}
+                    </div>
+                    <button type="button" onclick="dismissErrorToast();" class="btn-close me-2 m-auto"
+                            data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                <button type="button" onclick="dismissErrorToast();" class="btn-close me-2 m-auto"
-                        data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        </div>
-    @endif
+        @endif
+    @endforeach
 
     <div id="layoutAuthentication">
         <!-- Layout content-->

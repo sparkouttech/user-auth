@@ -25,6 +25,18 @@
         @yield('css')
     </head>
     <body class="bg-primary">
+    @if(session()->has('error'))
+        <div id="toast-error" class="error-alert-show toast align-items-center position-absolute top-0 end-0"
+             role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session()->get('error') }}
+                </div>
+                <button type="button" onclick="dismissErrorToast();" class="btn-close me-2 m-auto"
+                        data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
         @yield('content')
 
         <!-- Load Bootstrap JS bundle-->

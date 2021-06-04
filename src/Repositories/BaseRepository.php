@@ -23,6 +23,17 @@ class BaseRepository
     }
 
     /**
+     * @param $key
+     * @param $value
+     * @param array|string[] $columns
+     * @return Collection
+     */
+    public function findOne($key, $value, array $columns = ['*']): Collection
+    {
+        return $this->model->where($key,'=',$value)->first($columns);
+    }
+
+    /**
      * @param array $columns
      * @param array $relations
      * @return Collection
