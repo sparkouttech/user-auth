@@ -1,10 +1,9 @@
-# Very short description of the package
+# User Authentication
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sparkouttech/user-auth.svg?style=flat-square)](https://packagist.org/packages/sparkouttech/user-auth)
 [![Total Downloads](https://img.shields.io/packagist/dt/sparkouttech/user-auth.svg?style=flat-square)](https://packagist.org/packages/sparkouttech/user-auth)
-![GitHub Actions](https://github.com/sparkouttech/user-auth/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Complete user authentication system for laravel projects. One step installation with clean code.
 
 ## Installation
 
@@ -17,7 +16,14 @@ composer require sparkouttech/user-auth
 ## Usage
 
 ```php
-// Usage description here
+// add below line in config/app.php providers array
+
+Sparkouttech\UserAuth\UserAuthServiceProvider::class,
+```
+
+```php
+// run below command to import user tables 
+php artisan migrate
 ```
 
 ### Testing
@@ -40,13 +46,9 @@ If you discover any security related issues, please email gotocva@gmail.com inst
 
 ## Credits
 
--   [sivabharathy](https://github.com/sparkouttech)
--   [All Contributors](../../contributors)
+-   [sivabharathy](https://github.com/gotocva)
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
