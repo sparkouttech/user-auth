@@ -1,2 +1,1 @@
-<h2>
-Login Page </h2>
+@extends('user-auth::layouts.app-auth')
