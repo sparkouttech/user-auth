@@ -1,6 +1,7 @@
 # User Authentication
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sparkouttech/user-auth.svg?style=flat-square)](https://packagist.org/packages/sparkouttech/user-auth)
+[![Packagist](https://img.shields.io/packagist/l/sparkouttech/user-auth.svg)](https://packagist.org/packages/sparkouttech/user-auth) 
 [![Total Downloads](https://img.shields.io/packagist/dt/sparkouttech/user-auth.svg?style=flat-square)](https://packagist.org/packages/sparkouttech/user-auth)
 
 Complete user authentication system for laravel projects. One step installation with clean code.
