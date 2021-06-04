@@ -8,3 +8,5 @@ Route::get('/package', function () {
 });
 Route::get('/auth/user/login', [UserController::class, 'login'])->name('userAuth.login.page');
 Route::post('/auth/user/login', [UserController::class, 'doLogin'])->name('userAuth.login');
+Route::get('/auth/user/register', [UserController::class, 'register'])->name('userAuth.register.page');
+Route::post('/auth/user/register', [UserController::class, 'doRegister'])->name('userAuth.register');
