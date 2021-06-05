@@ -27,7 +27,7 @@ class RegisterTest extends TestCase
 
         $response = $this->post('/auth/user/register', $this->data());
 
-        $user = User::first();
+        $response->assertOk();
 
         $this->assertCount(1, User::all());
 
