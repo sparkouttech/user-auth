@@ -5,6 +5,7 @@ namespace Sparkouttech\UserAuth\App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Sparkouttech\UserAuth\App\Events\NewUserRegisteredEvent;
+use Sparkouttech\UserAuth\App\Jobs\WelcomEmailJob;
 use Sparkouttech\UserAuth\App\Requests\RegisterRequest;
 use Sparkouttech\UserAuth\App\Repositories\UserRepository;
 
@@ -27,9 +28,15 @@ class RegisterController extends Controller
         $requestData = $request->all();
         $requestData["password"] = Hash::make($requestData["password"]);
         $user = $this->userRepository->create($requestData);
-        $request->session()->put('user',$user);
-        $request->session()->put('userId',$user->id);
         event(new NewUserRegisteredEvent($requestData, $user));
-        return back()->with('message','User account created successfully');
+        if ($request->expectsJson() == true) {
+            // Api route
+            return response()->json(['status'=>true,'message'=>'User account created successfully','data'=>$user]);
+        } else {
+            // web logic
+            $request->session()->put('user',$user);
+            $request->session()->put('userId',$user->id);
+            return redirect('/')->with('message','User account created successfully');
+        }
     }
 }

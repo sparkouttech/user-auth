@@ -1,6 +1,8 @@
 @extends('user-auth::layouts.app-auth')
 
-@section('title', 'Reset password')
+@section('title')
+    {{ __('user-auth::messages.forget-password.title') }}
+@endsection
 
 @section('content')
 
@@ -31,27 +33,27 @@
                                 <div class="card-body p-5">
                                     <!-- Auth header with logo image-->
                                     <div class="text-center">
-                                        <h1 class="display-5 mb-4">Reset Password</h1>
+                                        <h1 class="display-5 mb-4">{{ __('user-auth::messages.forget-password.reset_password') }}</h1>
                                     </div>
                                     <!-- Reset password submission form-->
                                     <form method="post" action="{{route('userAuth.check-email')}}">
                                         {{csrf_field()}}
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                                                <small id="emailHelp" class="form-text text-muted">We'll send an verification link into your email.</small>
+                                                <label for="exampleInputEmail1">{{ __('user-auth::messages.forget-password.email_address') }}</label>
+                                                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ __('user-auth::messages.forget-password.enter_email') }}" required>
+                                                <small id="emailHelp" class="form-text text-muted">{{ __('user-auth::messages.forget-password.send_email') }}</small>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small fw-500 text-decoration-none" href="login">Return to login</a>
-                                            <button class="btn btn-primary" href="{{route('userAuth.login.page')}}">Reset Password</button>
+                                            <a class="small fw-500 text-decoration-none" href="login">{{ __('user-auth::messages.forget-password.return_login') }}</a>
+                                            <button class="btn btn-primary" href="{{route('userAuth.login.page')}}">{{ __('user-auth::messages.forget-password.reset_password') }}</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <!-- Auth card message-->
-                            <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-white" href="register">Need an account? Sign up!</a></div>
+                            <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-white" href="register">{{ __('user-auth::messages.forget-password.signup') }}</a></div>
                         </div>
                     </div>
                 </div>

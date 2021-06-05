@@ -40,6 +40,8 @@ class UserAuthServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/config/user-auth.php', 'user-auth');
 
         $this->app->register(App\Providers\EventServiceProvider::class);
+
+        $this->app->alias(App\Http\Middleware\JsonRequest::class, 'expect-json');
         // Register the main class to use with the facade
         $this->app->singleton('user-auth', function () {
             return new UserAuth;

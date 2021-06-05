@@ -21,32 +21,42 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-//        echo $this->config['path'];exit;
         return view('user-auth::login');
     }
 
+    public function resp($request,$error, $errorMessage, $data) {
+        if ($request->expectsJson() == true) {
+            // Api route
+            return response()->json(['status'=>!$error,'message'=>$errorMessage,'data'=>$data]);
+        } else {
+            if ($error == true) {
+                Session::flash('error', $errorMessage);
+                return back();
+            } else {
+                $request->session()->put('user',$data);
+                $request->session()->put('userId',$data->id);
+                return redirect('/')->with('message','Login success');
+            }
+        }
+    }
     /**
      * @param LoginRequest $request
      */
     public function doLogin(LoginRequest $request)
     {
-        $request = $request->all();
-        $user = $this->userRepository->findOne('email',$request['email']);
+        $requestData = $request->all();
+        $user = $this->userRepository->findOne('email',$requestData['email']);
         if (isset($user)) {
-            if (Hash::check($request['password'], $user->password)) {
+            if (Hash::check($requestData['password'], $user->password)) {
                 // Login success
-                $request->session()->put('user',$user);
-                $request->session()->put('userId',$user->id);
-                return back()->with('message','Login success');
+                return $this->resp($request, false,'Login success',$user);
             } else {
                 // Password doesn't match
-                Session::flash('error', 'This is a message!');
-                return back()->with('error','Password doesnt match with that account');
+                return $this->resp($request, true,'Password not match with account',$user);
             }
         } else {
             // Email not exists
-            Session::flash('error', 'This is a message!');
-            return back()->with('error','Email id doesnt match');
+            return $this->resp($request, true,'Email id not match with any account',(object)[]);
         }
     }
 }
