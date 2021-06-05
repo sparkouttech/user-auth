@@ -39,6 +39,7 @@ class UserAuthServiceProvider extends ServiceProvider
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/config/config.php', 'user-auth');
 
+        $this->app->register(App\Providers\EventServiceProvider::class);
         // Register the main class to use with the facade
         $this->app->singleton('user-auth', function () {
             return new UserAuth;

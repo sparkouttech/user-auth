@@ -17,7 +17,7 @@ composer require sparkouttech/user-auth
 ## Usage
 
 ```php
-// add below line in config/app.php providers array
+// add below line in config/App.php providers array
 
 Sparkouttech\UserAuth\UserAuthServiceProvider::class,
 ```

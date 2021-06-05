@@ -1,6 +1,6 @@
 <?php
 
-namespace Sparkouttech\UserAuth\app\Requests;
+namespace Sparkouttech\UserAuth\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -17,7 +17,7 @@ class SetPasswordRequest extends FormRequest {
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that Apply to the request.
      *
      * @return array
      */

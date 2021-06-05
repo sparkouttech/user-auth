@@ -1,10 +1,10 @@
 <?php
 
-namespace Sparkouttech\UserAuth\app\Requests;
+namespace Sparkouttech\UserAuth\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest {
+class RegisterRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -17,7 +17,7 @@ class LoginRequest extends FormRequest {
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that Apply to the request.
      *
      * @return array
      */
@@ -25,6 +25,7 @@ class LoginRequest extends FormRequest {
     {
         return [
             'email' => 'required|email|unique:users',
+            'name' => 'required|string|max:50',
             'password' => 'required'
         ];
     }
@@ -33,6 +34,7 @@ class LoginRequest extends FormRequest {
     {
         return [
             'email.required' => 'Email is required!',
+            'name.required' => 'Name is required!',
             'password.required' => 'Password is required!'
         ];
     }

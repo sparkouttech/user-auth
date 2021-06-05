@@ -1,8 +1,8 @@
 <?php
 
-namespace Sparkouttech\UserAuth\Repositories;
+namespace Sparkouttech\UserAuth\App\Repositories;
 
-use Sparkouttech\UserAuth\app\Models\User;
+use Sparkouttech\UserAuth\App\Models\User;
 
 class UserRepository extends BaseRepository {
 

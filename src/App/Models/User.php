@@ -1,16 +1,15 @@
 <?php
 
-namespace Sparkouttech\UserAuth\app\Models;
+namespace Sparkouttech\UserAuth\App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticate;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticate
 {
     use Notifiable;
-    use \Sparkouttech\UserAuth\app\Traits\Uuids;
-    
+    use \Sparkouttech\UserAuth\App\Traits\Uuids;
+
     /**
      * The attributes that are mass assignable.
      *

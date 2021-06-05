@@ -1,13 +1,13 @@
 <?php
 
-namespace Sparkouttech\UserAuth\app\Mail;
+namespace Sparkouttech\UserAuth\App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailTest extends Mailable
+class WelcomeNewUserMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,10 +16,9 @@ class EmailTest extends Mailable
      *
      * @return void
      */
-    public function __construct($mail)
+    public function __construct()
     {
         //
-        $this->mail = $mail;
     }
 
     /**
@@ -29,6 +28,6 @@ class EmailTest extends Mailable
      */
     public function build()
     {
-        return $this->markdown('forgotPassword.mail')->with("content",$this->mail);
+        return $this->markdown('user-auth::emails.welcome');
     }
 }

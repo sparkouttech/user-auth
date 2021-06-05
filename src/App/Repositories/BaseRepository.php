@@ -1,6 +1,6 @@
 <?php
 
-namespace Sparkouttech\UserAuth\Repositories;
+namespace Sparkouttech\UserAuth\App\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -26,9 +26,8 @@ class BaseRepository
      * @param $key
      * @param $value
      * @param array|string[] $columns
-     * @return Collection
      */
-    public function findOne($key, $value, array $columns = ['*']): Collection
+    public function findOne($key, $value, array $columns = ['*'])
     {
         return $this->model->where($key,'=',$value)->first($columns);
     }

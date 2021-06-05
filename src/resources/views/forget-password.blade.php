@@ -1,6 +1,6 @@
 @extends('user-auth::layouts.app-auth')
 
-@section('title', 'Login into your account')
+@section('title', 'Reset password')
 
 @section('content')
 
@@ -40,12 +40,12 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
                                                 <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                                <small id="emailHelp" class="form-text text-muted">We'll send an verification link into your email.</small>
                                             </div>
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small fw-500 text-decoration-none" href="login">Return to login</a>
-                                            <button class="btn btn-primary" href="{{route('getLogin')}}">Reset Password</button>
+                                            <button class="btn btn-primary" href="{{route('userAuth.login.page')}}">Reset Password</button>
                                         </div>
                                     </form>
                                 </div>

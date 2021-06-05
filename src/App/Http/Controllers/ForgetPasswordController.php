@@ -1,11 +1,12 @@
 <?php
 
-namespace Sparkouttech\UserAuth\app\Http\Controllers;
+namespace Sparkouttech\UserAuth\App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Sparkouttech\UserAuth\app\Requests\CheckEmailRequest;
-use Sparkouttech\UserAuth\app\Requests\SetPasswordRequest;
-use Sparkouttech\UserAuth\Repositories\UserRepository;
+use Sparkouttech\UserAuth\App\Jobs\ForgetPasswordEmailJob;
+use Sparkouttech\UserAuth\App\Requests\CheckEmailRequest;
+use Sparkouttech\UserAuth\App\Requests\SetPasswordRequest;
+use Sparkouttech\UserAuth\App\Repositories\UserRepository;
 
 class ForgetPasswordController extends Controller
 {
@@ -36,11 +37,10 @@ class ForgetPasswordController extends Controller
 
             $userExist = $this->userRepository->findOne('email',$request->email);
             if($userExist){
-                $email=new SendmailJob($userExist);
-                dispatch($email);
-                return back();
+                dispatch(new ForgetPasswordEmailJob($userExist));
+                return back()->with('message','Password reset link has been sent to your email');
             }else{
-                return back()->with('error','Your email is not found');
+                return back()->with('error','Entered email not match with any account');
             }
         }catch(Throwable $exception){
             return back()->with('error',$exception->getMessages());

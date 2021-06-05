@@ -1,11 +1,12 @@
 <?php
 
-namespace Sparkouttech\UserAuth\app\Http\Controllers;
+namespace Sparkouttech\UserAuth\App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Sparkouttech\UserAuth\app\Requests\RegisterRequest;
-use Sparkouttech\UserAuth\Repositories\UserRepository;
+use Sparkouttech\UserAuth\App\Events\NewUserRegisteredEvent;
+use Sparkouttech\UserAuth\App\Requests\RegisterRequest;
+use Sparkouttech\UserAuth\App\Repositories\UserRepository;
 
 class RegisterController extends Controller
 {
@@ -28,6 +29,7 @@ class RegisterController extends Controller
         $user = $this->userRepository->create($requestData);
         $request->session()->put('user',$user);
         $request->session()->put('userId',$user->id);
+        event(new NewUserRegisteredEvent($user));
         return back()->with('message','User account created successfully');
     }
 }

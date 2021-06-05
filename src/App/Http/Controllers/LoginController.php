@@ -1,12 +1,12 @@
 <?php
 
-namespace Sparkouttech\UserAuth\app\Http\Controllers;
+namespace Sparkouttech\UserAuth\App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Sparkouttech\UserAuth\app\Requests\LoginRequest;
-use Sparkouttech\UserAuth\Repositories\UserRepository;
+use Sparkouttech\UserAuth\App\Requests\LoginRequest;
+use Sparkouttech\UserAuth\App\Repositories\UserRepository;
 
 class LoginController extends Controller
 {
