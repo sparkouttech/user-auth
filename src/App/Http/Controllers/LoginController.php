@@ -11,14 +11,17 @@ use Sparkouttech\UserAuth\App\Repositories\UserRepository;
 class LoginController extends Controller
 {
     private $userRepository;
+    private $config;
 
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+        $this->config = config('user-auth');
     }
 
     public function login(Request $request)
     {
+//        echo $this->config['path'];exit;
         return view('user-auth::login');
     }
 

@@ -37,7 +37,7 @@ class UserAuthServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'user-auth');
+        $this->mergeConfigFrom(__DIR__ . '/config/user-auth.php', 'user-auth');
 
         $this->app->register(App\Providers\EventServiceProvider::class);
         // Register the main class to use with the facade
@@ -58,7 +58,7 @@ class UserAuthServiceProvider extends ServiceProvider
     public function configPublish()
     {
         $this->publishes([
-            __DIR__.'/config/config.php' => config_path('user-auth.php'),
+            __DIR__ . '/config/user-auth.php' => config_path('messages.php'),
         ], 'config');
     }
 

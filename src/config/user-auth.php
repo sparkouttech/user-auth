@@ -5,4 +5,5 @@
  */
 return [
 
+    "path" => "Sample value for path"
 ];

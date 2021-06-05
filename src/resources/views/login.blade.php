@@ -30,22 +30,23 @@
                         <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8">
                             <div class="card card-raised shadow-10 mt-5 mt-xl-10 mb-4">
                                 <div class="card-body p-5">
-                                    <!-- Auth header with logo image-->
+                                    <!-- Auth header -->
                                     <div class="text-center">
-                                        <h1 class="display-5 mb-0">Login</h1>
-                                        <div class="subheading-1 mb-5">to continue the app</div>
+                                        <h1 class="display-5 mb-0">{{ __('user-auth::messages.login.title') }}</h1>
+                                        <div class="subheading-1 mb-5"></div>
                                     </div>
                                     <!-- Login submission form-->
                                     <form method="post" action="{{route('userAuth.login')}}">
                                         {{csrf_field()}}
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
+                                                <label for="exampleInputEmail1">{{ __('user-auth::messages.login.email_address') }}</label>
                                                 <input type="email" class="form-control" name="email"
                                                        id="exampleInputEmail1" aria-describedby="emailHelp"
                                                        placeholder="Enter email">
-                                                <small id="emailHelp" class="form-text text-muted">We'll never share
-                                                    your email with anyone else.</small>
+                                                <small id="emailHelp" class="form-text text-muted">
+                                                    {{ __('user-auth::messages.login.email_privacy_info') }}
+                                                </small>
                                             </div>
                                         </div>
                                         <div class="mb-4">
