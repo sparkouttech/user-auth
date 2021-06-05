@@ -1,6 +1,6 @@
 @extends('user-auth::layouts.app-auth')
 
-@section('title', 'Login into your account')
+@section('title',"{{ __('user-auth::messages.login.heading') }}")
 
 @section('content')
 
@@ -20,7 +20,7 @@
     @endforeach
 
     <div id="layoutAuthentication">
-        <!-- Layout content-->
+        <!-- Layout content--> 
         <div id="layoutAuthentication_content">
             <!-- Main page content-->
             <main>
@@ -43,7 +43,7 @@
                                                 <label for="exampleInputEmail1">{{ __('user-auth::messages.login.email_address') }}</label>
                                                 <input type="email" class="form-control" name="email"
                                                        id="exampleInputEmail1" aria-describedby="emailHelp"
-                                                       placeholder="Enter email">
+                                                       placeholder="{{ __('user-auth::messages.login.enter_email') }}">
                                                 <small id="emailHelp" class="form-text text-muted">
                                                     {{ __('user-auth::messages.login.email_privacy_info') }}
                                                 </small>
@@ -51,23 +51,23 @@
                                         </div>
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Password</label>
+                                                <label for="exampleInputPassword1">{{ __('user-auth::messages.login.password') }}</label>
                                                 <input type="password" class="form-control" name="password"
-                                                       id="exampleInputPassword1" placeholder="Password">
+                                                       id="exampleInputPassword1" placeholder="{{ __('user-auth::messages.login.password') }}">
                                             </div>
                                         </div>
                                         <div
                                             class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small fw-500 text-decoration-none"
-                                               href="{{route('userAuth.forgetPasswordPage')}}">Forgot Password?</a>
-                                            <button type="submit" class="btn btn-primary">Login</button>
+                                               href="{{route('userAuth.forgetPasswordPage')}}">{{ __('user-auth::messages.login.forgot_password') }}</a>
+                                            <button type="submit" class="btn btn-primary">{{ __('user-auth::messages.login.login') }}</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <!-- Auth card message-->
                             <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-white"
-                                                             href="register">Need an account? Sign up!</a></div>
+                                                             href="register">{{ __('user-auth::messages.login.signup') }}</a></div>
                         </div>
                     </div>
                 </div>

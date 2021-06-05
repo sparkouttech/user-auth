@@ -10,7 +10,6 @@ class NewUserRegisteredEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $request;
     public $user;
 
     /**
@@ -18,9 +17,8 @@ class NewUserRegisteredEvent
      *
      * @return void
      */
-    public function __construct($request,$user)
+    public function __construct($user)
     {
         $this->user = $user;
-        $this->request = $request;
     }
 }

@@ -1,6 +1,6 @@
 @extends('user-auth::layouts.app-auth')
 
-@section('title', 'Create a new account')
+@section('title',"{{ __('user-auth::messages.register.title') }}")
 
 @section('content')
 
@@ -32,40 +32,40 @@
                                 <div class="card-body p-5">
                                     <!-- Auth header with logo image-->
                                     <div class="text-center">
-                                        <h1 class="display-5 mb-0">Create New Account</h1>
-                                        <div class="subheading-1 mb-5">to continue the app</div>
+                                        <h1 class="display-5 mb-0">{{ __('user-auth::messages.register.new_account') }}</h1>
+                                        <div class="subheading-1 mb-5">{{ __('user-auth::messages.register.continue_app') }}</div>
                                     </div>
                                     <!-- Register new account form-->
                                     <form action="{{route('userAuth.register')}}" method="POST">
                                         {{csrf_field()}}
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputName1">Name</label>
-                                                <input type="text" required class="form-control" name="name" id="exampleInputName1" placeholder="Enter your name">
+                                                <label for="exampleInputName1">{{ __('user-auth::messages.register.name') }}</label>
+                                                <input type="text" required class="form-control" name="name" id="exampleInputName1" placeholder="{{ __('user-auth::messages.register.enter_name') }}">
                                             </div>
                                         </div>
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
-                                                <small id="emailHelp" required class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                                <label for="exampleInputEmail1">{{ __('user-auth::messages.register.email_address') }}</label>
+                                                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ __('user-auth::messages.register.enter_email') }}">
+                                                <small id="emailHelp" required class="form-text text-muted">{{ __('user-auth::messages.register.email_privacy_info') }}</small>
                                             </div>
                                         </div>
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="phone">Phone Number</label>
-                                                <input type="text" class="form-control" name="phone_number" id="phone" placeholder="Enter your phone number">
+                                                <label for="phone">{{ __('user-auth::messages.register.phone_number') }}</label>
+                                                <input type="text" class="form-control" name="phone_number" id="phone" placeholder="{{ __('user-auth::messages.register.enter_phone_number') }}">
                                             </div>
                                         </div>
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" required class="form-control" name="password" id="exampleInputPassword1" placeholder="Enter your password">
+                                                <label for="exampleInputPassword1">{{ __('user-auth::messages.register.password') }}</label>
+                                                <input type="password" required class="form-control" name="password" id="exampleInputPassword1" placeholder="{{ __('user-auth::messages.register.enter_password') }}">
                                             </div>
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small fw-500 text-decoration-none" href="{{route('userAuth.login')}}">Sign in instead</a>
-                                            <button type="submit" class="btn btn-primary">Register</button>
+                                            <a class="small fw-500 text-decoration-none" href="{{route('userAuth.login')}}">{{ __('user-auth::messages.register.signin') }}</a>
+                                            <button type="submit" class="btn btn-primary">{{ __('user-auth::messages.register.register') }}</button>
                                         </div>
                                     </form>
                                 </div>

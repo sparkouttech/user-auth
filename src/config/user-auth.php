@@ -1,15 +1,9 @@
 <?php
 
 /*
- * UserAuth package configuration
+ * You can place your custom package configuration in here.
  */
 return [
-
-    /**
-     * Enable / Disable referral module
-     */
-    "referral" => false,
-    "referral_code_length" => 10,
 
     "path" => "Sample value for path"
 ];
