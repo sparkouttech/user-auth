@@ -29,7 +29,7 @@ class RegisterController extends Controller
         $user = $this->userRepository->create($requestData);
         $request->session()->put('user',$user);
         $request->session()->put('userId',$user->id);
-        event(new NewUserRegisteredEvent($user));
+        event(new NewUserRegisteredEvent($requestData, $user));
         return back()->with('message','User account created successfully');
     }
 }

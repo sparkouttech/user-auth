@@ -37,6 +37,30 @@
             </div>
         </div>
     @endif
+    @if(session()->has('success'))
+        <div id="toast-error" class="success-alert-show toast align-items-center position-absolute top-0 end-0"
+             role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session()->get('success') }}
+                </div>
+                <button type="button" onclick="dismissErrorToast();" class="btn-close me-2 m-auto"
+                        data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+    @if(session()->has('message'))
+        <div id="toast-error" class="message-alert-show toast align-items-center position-absolute top-0 end-0"
+             role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session()->get('message') }}
+                </div>
+                <button type="button" onclick="dismissErrorToast();" class="btn-close me-2 m-auto"
+                        data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
         @yield('content')
 
         <!-- Load Bootstrap JS bundle-->

@@ -5,6 +5,7 @@ namespace Sparkouttech\UserAuth\App\Listeners;
 use Sparkouttech\UserAuth\App\Mail\WelcomeNewUserMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
+use Log;
 
 class WelcomeNewUserListener implements ShouldQueue
 {
@@ -16,8 +17,12 @@ class WelcomeNewUserListener implements ShouldQueue
      */
     public function handle($event)
     {
-        sleep(10);
+        try {
+            Mail::to($event->user->email)->send(new WelcomeNewUserMail());
+        } catch (\Exception $exception) {
+            Log::error('Exception occurred on email');
+            Log::error(print_r($exception));
+        }
 
-        Mail::to($event->user->email)->send(new WelcomeNewUserMail());
     }
 }
