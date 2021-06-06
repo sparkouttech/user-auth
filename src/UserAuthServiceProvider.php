@@ -61,7 +61,7 @@ class UserAuthServiceProvider extends ServiceProvider
     public function configPublish()
     {
         $this->publishes([
-            __DIR__ . '/config/user-auth.php' => config_path('messages.php'),
+            __DIR__ . '/config/user-auth.php' => config_path('user-auth.php'),
         ], 'config');
     }
 
