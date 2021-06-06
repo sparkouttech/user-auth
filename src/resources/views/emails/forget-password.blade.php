@@ -11,7 +11,7 @@
 </p>
 
 
-<a href="http://localhost:8000/user/reset-password/{{$content->id}}" target="_blank">
+<a href="{{url('/')}}/user/reset-password/{{$content->id}}" target="_blank">
     Click Here
 </a>
 <br>
