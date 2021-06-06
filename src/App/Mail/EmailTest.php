@@ -29,6 +29,6 @@ class EmailTest extends Mailable
      */
     public function build()
     {
-        return $this->markdown('forgotPassword.mail')->with("content",$this->mail);
+        return $this->markdown('user-auth::emails.forget-password')->with("content",$this->mail);
     }
 }
