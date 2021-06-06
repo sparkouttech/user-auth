@@ -17,7 +17,7 @@ Route::group(['middleware' => 'web'], function() {
 
 });
 
-Route::group(['prefix' => 'api'], function() {
+Route::group(['prefix' => 'api','middleware' => ['cors', 'json']], function() {
     //All the routes that belongs to the group goes here
     Route::post('/auth/user/login', [LoginController::class, 'doLogin'])->name('api.login');
     Route::post('/auth/user/register', [RegisterController::class, 'doRegister'])->name('api.register');

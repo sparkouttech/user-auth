@@ -25,9 +25,8 @@ Sparkouttech\UserAuth\UserAuthServiceProvider::class,
 
 Run below command to publish assets 
 ```php
-php artisan vendor:publish --tag=UserAuthAssets --force
+php artisan vendor:publish --provider="Sparkouttech\UserAuth\UserAuthServiceProvider" --tag=UserAuthAssets --force
 ```
-
 
 ```php
 // run below command to import user tables 

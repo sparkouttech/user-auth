@@ -35,20 +35,20 @@
                                     <!-- Auth header with logo image-->
                                     <div class="text-center">
                                         <h1 class="display-5 mb-0">{{ __('user-auth::messages.register.new_account') }}</h1>
-                                        <div class="subheading-1 mb-5">{{ __('user-auth::messages.register.continue_app') }}</div>
+                                        <div class="subheading-1 mb-5"></div>
                                     </div>
                                     <!-- Register new account form-->
                                     <form action="{{route('userAuth.register')}}" method="POST">
                                         {{csrf_field()}}
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputName1">{{ __('user-auth::messages.register.name') }}</label>
+                                                <label for="exampleInputName1">{{ __('user-auth::messages.register.name') }} *</label>
                                                 <input type="text" required class="form-control" name="name" id="exampleInputName1" placeholder="{{ __('user-auth::messages.register.enter_name') }}">
                                             </div>
                                         </div>
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">{{ __('user-auth::messages.register.email_address') }}</label>
+                                                <label for="exampleInputEmail1">{{ __('user-auth::messages.register.email_address') }} *</label>
                                                 <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ __('user-auth::messages.register.enter_email') }}">
                                                 <small id="emailHelp" required class="form-text text-muted">{{ __('user-auth::messages.register.email_privacy_info') }}</small>
                                             </div>
@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">{{ __('user-auth::messages.register.password') }}</label>
+                                                <label for="exampleInputPassword1">{{ __('user-auth::messages.register.password') }} *</label>
                                                 <input type="password" required class="form-control" name="password" id="exampleInputPassword1" placeholder="{{ __('user-auth::messages.register.enter_password') }}">
                                             </div>
                                         </div>

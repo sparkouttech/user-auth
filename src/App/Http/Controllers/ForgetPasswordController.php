@@ -2,6 +2,7 @@
 
 namespace Sparkouttech\UserAuth\App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Sparkouttech\UserAuth\App\Jobs\ForgetPasswordEmailJob;
 use Sparkouttech\UserAuth\App\Requests\CheckEmailRequest;
@@ -33,27 +34,19 @@ class ForgetPasswordController extends Controller
     }
 
     public function checkEmail(CheckEmailRequest $request){
-        try{
-
-            $userExist = $this->userRepository->findOne('email',$request->email);
-            if($userExist){
-                dispatch(new ForgetPasswordEmailJob($userExist));
-                return back()->with('message','Password reset link has been sent to your email');
-            }else{
-                return back()->with('error','Entered email not match with any account');
-            }
-        }catch(Throwable $exception){
-            return back()->with('error',$exception->getMessages());
+        $userExist = $this->userRepository->findOne('email',$request->email);
+        if($userExist){
+            dispatch(new ForgetPasswordEmailJob($userExist));
+            Session::flash('message','Password reset link has been sent to your email');
+            return back()->with('message','Password reset link has been sent to your email');
+        }else{
+            return back()->with('error','Entered email not match with any account');
         }
     }
 
     public function setPassword(SetPasswordRequest $request)
     {
-        try{
-            $this->userRepository->update($request->id, ['password' => $request->password]);
-            return redirect()->route('userAuth.login.page');
-        }catch(Throwable $exception){
-            return back()->with('errors',$exception->getMessages());
-        }
+        $this->userRepository->update($request->id, ['password' => $request->password]);
+        return redirect()->route('userAuth.login.page');
     }
 }

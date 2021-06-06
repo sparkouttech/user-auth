@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
     @foreach($errors->all() as $key => $error)
         @if($key == 0)
             <div id="toast-error" class="error-alert-show toast align-items-center position-absolute top-0 end-0"
@@ -20,7 +19,6 @@
             </div>
         @endif
     @endforeach
-
     <div id="layoutAuthentication">
         <!-- Layout content-->
         <div id="layoutAuthentication_content">
@@ -42,19 +40,16 @@
                                         {{csrf_field()}}
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">{{ __('user-auth::messages.login.email_address') }}</label>
+                                                <label for="exampleInputEmail1">{{ __('user-auth::messages.login.email_address') }} *</label>
                                                 <input type="email" class="form-control" name="email"
-                                                       id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                       id="exampleInputEmail1" aria-describedby="email" required
                                                        placeholder="{{ __('user-auth::messages.login.enter_email') }}">
-                                                <small id="emailHelp" class="form-text text-muted">
-                                                    {{ __('user-auth::messages.login.email_privacy_info') }}
-                                                </small>
                                             </div>
                                         </div>
                                         <div class="mb-4">
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">{{ __('user-auth::messages.login.password') }}</label>
-                                                <input type="password" class="form-control" name="password"
+                                                <label for="exampleInputPassword1">{{ __('user-auth::messages.login.password') }} *</label>
+                                                <input type="password" required class="form-control" name="password"
                                                        id="exampleInputPassword1" placeholder="{{ __('user-auth::messages.login.password') }}">
                                             </div>
                                         </div>

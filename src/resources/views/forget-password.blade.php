@@ -46,14 +46,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small fw-500 text-decoration-none" href="login">{{ __('user-auth::messages.forget-password.return_login') }}</a>
+                                            <a class="small fw-500 text-decoration-none" href="login"></a>
                                             <button class="btn btn-primary" href="{{route('userAuth.login.page')}}">{{ __('user-auth::messages.forget-password.reset_password') }}</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <!-- Auth card message-->
-                            <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-white" href="register">{{ __('user-auth::messages.forget-password.signup') }}</a></div>
+                            <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-white" href="{{route('userAuth.register.page')}}">{{ __('user-auth::messages.forget-password.signup') }}</a></div>
                         </div>
                     </div>
                 </div>

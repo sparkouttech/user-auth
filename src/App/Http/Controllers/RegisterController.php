@@ -4,18 +4,19 @@ namespace Sparkouttech\UserAuth\App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Sparkouttech\UserAuth\App\Events\NewUserRegisteredEvent;
-use Sparkouttech\UserAuth\App\Jobs\WelcomEmailJob;
+use Sparkouttech\UserAuth\App\Helpers\Helper;
 use Sparkouttech\UserAuth\App\Requests\RegisterRequest;
 use Sparkouttech\UserAuth\App\Repositories\UserRepository;
 
 class RegisterController extends Controller
 {
     private $userRepository;
+    private $helper;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, Helper $helper)
     {
         $this->userRepository = $userRepository;
+        $this->helper = $helper;
     }
 
     public function register(Request $request)
@@ -25,15 +26,13 @@ class RegisterController extends Controller
 
     public function doRegister(RegisterRequest $request)
     {
-        $requestData = $request->all();
-        $requestData["password"] = Hash::make($requestData["password"]);
-        $user = $this->userRepository->create($requestData);
-        event(new NewUserRegisteredEvent($requestData, $user));
+        $token = $this->helper->encrypt(implode("-",$request->toArray()));
+        $request['password']=Hash::make($request['password']);
+        $request['authentication_token'] = $token;
+        $user = $this->userRepository->create($request->toArray());
         if ($request->expectsJson() == true) {
-            // Api route
-            return response()->json(['status'=>true,'message'=>'User account created successfully','data'=>$user]);
+            return response(['status'=>true,'data'=>$user], 200);
         } else {
-            // web logic
             $request->session()->put('user',$user);
             $request->session()->put('userId',$user->id);
             return redirect('/')->with('message','User account created successfully');

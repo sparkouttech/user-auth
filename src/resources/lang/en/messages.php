@@ -18,7 +18,7 @@ return [
 
     "register" => [
         "title" => "Create a new account",
-        "new_account" => "Create New Account",
+        "new_account" => "Create a new account",
         "continue_app" => "to continue the app",
         "name" => "Name",
         "enter_name" => "Enter your name",

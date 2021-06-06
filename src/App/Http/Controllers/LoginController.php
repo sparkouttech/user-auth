@@ -2,11 +2,11 @@
 
 namespace Sparkouttech\UserAuth\App\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Sparkouttech\UserAuth\App\Requests\LoginRequest;
 use Sparkouttech\UserAuth\App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -24,39 +24,29 @@ class LoginController extends Controller
         return view('user-auth::login');
     }
 
-    public function resp($request,$error, $errorMessage, $data) {
-        if ($request->expectsJson() == true) {
-            // Api route
-            return response()->json(['status'=>!$error,'message'=>$errorMessage,'data'=>$data]);
-        } else {
-            if ($error == true) {
-                Session::flash('error', $errorMessage);
-                return back();
-            } else {
-                $request->session()->put('user',$data);
-                $request->session()->put('userId',$data->id);
-                return redirect('/')->with('message','Login success');
-            }
-        }
-    }
     /**
      * @param LoginRequest $request
      */
     public function doLogin(LoginRequest $request)
     {
-        $requestData = $request->all();
-        $user = $this->userRepository->findOne('email',$requestData['email']);
-        if (isset($user)) {
-            if (Hash::check($requestData['password'], $user->password)) {
-                // Login success
-                return $this->resp($request, false,'Login success',$user);
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            echo "Login success";
+            if ($request->expectsJson() == true) {
+                return response()->json(['status'=>true,'message'=>'Login success','data'=>Auth::user()]);
             } else {
-                // Password doesn't match
-                return $this->resp($request, true,'Password not match with account',$user);
+                $request->session()->put('user',Auth::user());
+                $request->session()->put('userId',Auth::id());
+                return redirect('/')->with('message','Login success');
             }
         } else {
-            // Email not exists
-            return $this->resp($request, true,'Email id not match with any account',(object)[]);
+            if ($request->expectsJson() == true) {
+                return response()->json(['status'=>false,'message'=>'Login failed','data'=>(object)[]]);
+            } else {
+                Session::flash('error', 'Invalid credentials');
+                return back();
+            }
         }
     }
 }

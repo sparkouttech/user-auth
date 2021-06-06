@@ -11,5 +11,14 @@ return [
     "referral" => true,
     "referral_code_length" => 10,
 
-    "path" => "Sample value for path"
+    /**
+     *
+     */
+    "crypto" => [
+        "ciphering" => "AES-128-CTR",
+        "options" => 0,
+        "key" => "SparkoutUserAuth",
+        "iv" => "1234567891011121"
+    ]
+
 ];
