@@ -5,6 +5,8 @@
  */
 return [
 
+    "login_redirect" => "/",
+    
     // Enable / Disable referral module
     "referral" => true,
     "referral_code_length" => 10,

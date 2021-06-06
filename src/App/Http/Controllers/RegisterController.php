@@ -35,7 +35,7 @@ class RegisterController extends Controller
         } else {
             $request->session()->put('user',$user);
             $request->session()->put('userId',$user->id);
-            return redirect('/')->with('message','User account created successfully');
+            return redirect('/auth/user/login')->with('message','User account created successfully');
         }
     }
 }

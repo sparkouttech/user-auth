@@ -32,13 +32,12 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            echo "Login success";
             if ($request->expectsJson() == true) {
                 return response()->json(['status'=>true,'message'=>'Login success','data'=>Auth::user()]);
             } else {
                 $request->session()->put('user',Auth::user());
-                $request->session()->put('userId',Auth::id());
-                return redirect('/')->with('message','Login success');
+                $request->session()->put('token',Auth::id());
+                return redirect($this->config['login_redirect'])->with('message','Login success');
             }
         } else {
             if ($request->expectsJson() == true) {
