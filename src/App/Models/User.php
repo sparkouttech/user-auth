@@ -10,6 +10,9 @@ class User extends Authenticate
     use Notifiable;
     use \Sparkouttech\UserAuth\App\Traits\Uuids;
 
+    protected $casts = [
+        'id' => 'string'
+    ];
     /**
      * The attributes that are mass assignable.
      *
