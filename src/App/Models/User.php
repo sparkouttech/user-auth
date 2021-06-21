@@ -10,8 +10,20 @@ class User extends Authenticate
     use Notifiable;
     use \Sparkouttech\UserAuth\App\Traits\Uuids;
 
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
-        'id' => 'string'
+        'id' => 'string','email_verified_at' => 'datetime'
     ];
     /**
      * The attributes that are mass assignable.
@@ -31,12 +43,4 @@ class User extends Authenticate
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }
